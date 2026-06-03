@@ -138,9 +138,7 @@ function MouseSpotlight() {
   );
 }
 
-          YOUR<br />CODE<br />HAS A<br />
-          <span className="lnd-hero-highlight">PULSE</span>
-          <span className="lnd-hero-dot">.</span>
+          
 /* ═══════════════════════════════════════════════════════════
    BENTO WIDGETS
    ═══════════════════════════════════════════════════════════ */
@@ -404,15 +402,18 @@ function HeroSection() {
             fontSize: 'clamp(40px,6.5vw,82px)', lineHeight: 0.95,
             letterSpacing: '-0.04em', color: TEXT, margin: '0 0 24px',
             animation: 'lndHeroIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both',
-            textShadow: '0 4px 24px rgba(0,0,0,0.4)',
+            textShadow: '0 4px 24px rgba(0,0,0,0.35)',
           }}
         >
+          Build a smarter developer dashboard with
+          <span className="lnd-hero-highlight"> GitHub streaks, PR velocity,</span>
+          <br />and coding goals in one polished view.
         </h1>
 
-        {/* Tagline — NOW HIGH CONTRAST */}
+        {/* Tagline — high contrast and readable */}
         <p style={{
-          fontSize: 'clamp(16px,2vw,18px)', color: MUTED,
-          lineHeight: 1.6, maxWidth: 420, margin: '0 0 36px',
+          fontSize: 'clamp(16px,2vw,18px)', color: 'rgba(226,232,240,0.88)',
+          lineHeight: 1.7, maxWidth: 460, margin: '0 0 36px',
           fontWeight: 400,
         }}>
           Open-source developer productivity dashboard. Track GitHub streaks,
@@ -421,7 +422,7 @@ function HeroSection() {
 
         {/* CTAs */}
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <a href="/api/auth/signin/github?callbackUrl=/dashboard" className="lnd-cta-primary" style={{
+          <a href="/api/auth/signin/github?callbackUrl=/dashboard" className="lnd-cta-primary" aria-label="Sign in with GitHub" style={{
             boxShadow: '0 8px 24px rgba(129,140,248,0.3)',
             transition: 'transform 0.3s, box-shadow 0.3s',
             transform: 'translateY(0)',
@@ -434,7 +435,7 @@ function HeroSection() {
             e.currentTarget.style.transform = 'translateY(0)';
             e.currentTarget.style.boxShadow = '0 8px 24px rgba(129,140,248,0.3)';
           }}>
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
             </svg>
             Sign in with GitHub
@@ -444,6 +445,7 @@ function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="lnd-cta-secondary"
+            aria-label="Star DevTrack on GitHub"
             style={{
               transition: 'transform 0.3s, background 0.3s',
               transform: 'translateY(0)',

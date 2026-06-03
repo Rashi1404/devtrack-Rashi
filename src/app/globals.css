@@ -302,8 +302,15 @@ body {
   border: 1px solid var(--border);
   border-radius: 5px;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .lnd-nav-link:hover { color: var(--foreground); border-color: var(--muted-foreground); }
+.lnd-nav-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+  border-color: var(--focus-ring);
+  color: var(--foreground);
+}
 
 .lnd-cta-primary {
   display: inline-flex;
@@ -344,10 +351,11 @@ body {
 }
 
 .lnd-cta-secondary:hover {
-  background: #818cf8;
+  background: rgba(129,140,248,0.24);
   color: #fff;
-  border-color: #818cf8;
+  border-color: rgba(129,140,248,0.7);
   transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(129,140,248,0.16);
 }
 
 

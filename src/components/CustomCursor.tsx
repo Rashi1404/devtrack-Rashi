@@ -2,10 +2,16 @@
 
 import { useEffect, useState, useRef } from "react";
 
+const DOT_SIZE = 8;
+const RING_SIZE = 32;
+const HOVER_RING_SCALE = 1.45;
+const CLICK_SCALE = 0.88;
+
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+  const [isPressed, setIsPressed] = useState(false);
 
   // Target mouse coordinates
   const mouseRef = useRef({ x: -100, y: -100 });
@@ -36,11 +42,15 @@ export default function CustomCursor() {
 
     const onMouseLeave = () => {
       setIsHidden(true);
+      setIsPressed(false);
     };
 
     const onMouseEnter = () => {
       setIsHidden(false);
     };
+
+    const onMouseDown = () => setIsPressed(true);
+    const onMouseUp = () => setIsPressed(false);
 
     // Check if user is hovering over interactive components
     const onMouseOver = (e: MouseEvent) => {
@@ -65,6 +75,8 @@ export default function CustomCursor() {
     window.addEventListener("mouseleave", onMouseLeave, { passive: true });
     window.addEventListener("mouseenter", onMouseEnter, { passive: true });
     window.addEventListener("mouseover", onMouseOver, { passive: true });
+    window.addEventListener("mousedown", onMouseDown, { passive: true });
+    window.addEventListener("mouseup", onMouseUp, { passive: true });
 
     let rafId: number;
 
@@ -119,6 +131,8 @@ export default function CustomCursor() {
       window.removeEventListener("mouseleave", onMouseLeave);
       window.removeEventListener("mouseenter", onMouseEnter);
       window.removeEventListener("mouseover", onMouseOver);
+      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("resize", handleResize);
       if (resizeTimeoutRef.current) {
         clearTimeout(resizeTimeoutRef.current);
@@ -128,6 +142,11 @@ export default function CustomCursor() {
   }, []);
 
   if (!mounted) return null;
+
+  const clicking = isPressed;
+  const hovering = isHovered;
+  const visible = !isHidden;
+
 
   const base: React.CSSProperties = {
     position: "fixed",

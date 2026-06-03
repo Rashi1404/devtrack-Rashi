@@ -91,12 +91,9 @@ export default function AppNavbar() {
           href={isAuthenticated ? "/dashboard" : "/"}
           className="group inline-flex items-center gap-2.5 select-none transition-transform duration-300 hover:scale-[1.02]"
           style={{ fontFamily: MONO }}
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)]/10 text-base font-bold text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)]/20">
-            ▲
-          </span>
-          <span className="text-sm font-bold tracking-[0.2em] text-[var(--foreground)]">
-            DEVTRACK
+            aria-label="Go to DevTrack home"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-base font-bold text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)]/25">
           </span>
         </Link>
 
